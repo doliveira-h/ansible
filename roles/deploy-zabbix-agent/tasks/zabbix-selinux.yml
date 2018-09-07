@@ -1,0 +1,20 @@
+---
+- name: start auditd
+  service:
+    name: auditd
+    state: started
+
+- name: restart zabbix-agent
+  service:
+    name: zabbix-agent
+    state: restarted
+  register: zabbix_status
+  ignore_errors: yes
+
+- name: zabbix agent module
+  shell: "cd /tmp; cat /var/log/audit/audit.log | grep zabbix_agentd | grep denied | audit2allow -M {{ zabbix_pol }}"
+  when: zabbix_status.failed
+
+- name: semodule -i zabbix_agent_setrlimit.pp
+  shell: "cd /tmp; semodule -i {{ zabbix_pol }}.pp"
+  when: zabbix_status.failed

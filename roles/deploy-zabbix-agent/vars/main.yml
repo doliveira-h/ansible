@@ -1,0 +1,22 @@
+---
+# vars file for deploy-zabbix-agent
+custom_files:
+  - iostat-collect.sh
+  - iostat-parse.sh
+  - memory_zabbix_master_item.sh
+  - PRB_BR_analisar_diskstats_linux.sh
+  - queryDisks.pl
+
+agentd_files:
+  - iostat.conf
+  - parameter_disks.conf
+  - userparameter_linux-plus.conf 
+  
+zabbix_conf: "zabbix_agentd_EL7.conf"
+
+zabbix_bin: "zabbix_agentd"
+
+jq_bin: "jq"
+
+zabbix_pol: "zabbix_agent_setrlimit"
+

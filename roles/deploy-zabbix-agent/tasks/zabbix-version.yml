@@ -1,0 +1,12 @@
+---
+# tasks file for deploy-zabbix-agent
+- name: Get current version of zabbix-agent
+  shell: zabbix_agentd -V|head -n 1
+  register: zabbix_agentd_version
+  ignore_errors: yes
+  changed_when: false
+  
+- name: Set fact zabbix_updated when zabbix_agentd version is 3.4.12
+  set_fact:
+    zabbix_updated: true
+  when: "'3.4.12' in zabbix_agentd_version.stdout"

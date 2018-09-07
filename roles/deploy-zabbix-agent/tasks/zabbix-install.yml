@@ -1,0 +1,36 @@
+---
+- name: Copy custom files zabbix_agent
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/zabbix/custom/"
+  with_items: "{{ custom_files }}"
+  notify: restart zabbix
+
+- name: Copy agentd_files files zabbix_agent
+  copy:
+    src: "{{ item }}"
+    dest: "/etc/zabbix/zabbix_agentd.d/"
+  with_items: "{{ agentd_files }}"
+  notify: restart zabbix
+
+- name: Copy zabbix_agentd_EL7.conf config 
+  copy:
+    src: "{{zabbix_conf}}"
+    dest: "/etc/zabbix/zabbix_agentd_EL7.conf"
+  notify: restart zabbix
+
+- name: Copy zabbix_bin 
+  copy:
+    src: "{{zabbix_bin}}"
+    dest: "/usr/sbin/zabbix_agentd"
+    owner: root
+    mode: 0755
+  notify: restart zabbix
+
+- name: Copy jq_bin 
+  copy:
+    src: "{{jq_bin}}"
+    dest: "/etc/zabbix/custom/jq"
+    owner: root
+    mode: 0755
+  notify: restart zabbix

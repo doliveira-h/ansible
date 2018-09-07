@@ -1,0 +1,6 @@
+---
+# handlers file for deploy-zabbix-agent
+- name: restart zabbix
+  service:
+    name: zabbix-agent
+    state: restarted

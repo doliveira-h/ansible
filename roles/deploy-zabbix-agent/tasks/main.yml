@@ -1,0 +1,6 @@
+---
+# tasks file for deploy-zabbix-agent
+- include_tasks: zabbix-version.yml
+- include_tasks: zabbix-selinux.yml
+  when: zabbix_updated is undefined
+- include_tasks: zabbix-install.yml
