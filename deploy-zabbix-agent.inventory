@@ -1,6 +1,0 @@
-[all:vars]
-ansible_user=sprdn05
-
-[servers]
-ocpmasterdvlbrn001.bs.br.bsch
-ocprouterdvlbrn002.bs.br.bsch
