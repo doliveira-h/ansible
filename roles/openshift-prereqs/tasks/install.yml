@@ -1,0 +1,12 @@
+---
+# tasks file for openshift-prereqs
+- name: Install required packages
+  yum:
+    name: "{{ item }}"
+    state: present
+  loop:  "{{ packages|flatten(levels=1) }}"
+
+- name: Install Docker Package
+  yum:
+    name: docker
+    state: present

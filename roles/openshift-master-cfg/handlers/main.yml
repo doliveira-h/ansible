@@ -1,0 +1,6 @@
+---
+# handlers file for openshift-master-cfg
+- name: service docker reload
+  service:
+    name: docker
+    state: reloaded

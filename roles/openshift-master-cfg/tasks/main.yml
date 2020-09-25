@@ -1,0 +1,3 @@
+---
+# tasks file for openshift-master-cfg
+- include: configure.yml

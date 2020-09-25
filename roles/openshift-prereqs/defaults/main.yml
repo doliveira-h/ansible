@@ -1,0 +1,14 @@
+---
+# defaults file for openshift-prereqs
+packages:
+  - wget
+  - git
+  - net-tools
+  - bind-utils
+  - iptables-services
+  - bridge-utils
+  - bash-completion
+  - kexec-tools
+  - sos
+  - psacct
+  - NetworkManager
